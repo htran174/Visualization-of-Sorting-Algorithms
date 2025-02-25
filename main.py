@@ -2,19 +2,19 @@ import tkinter as tk
 from tkinter import messagebox
 import random
 
-def bubble_sort():
+def bubble_sort(random_array):
     print("Using Bubble Sort")
 
-def merge_sort():
+def merge_sort(random_array):
     print("Using Merge Sort")
 
-def quick_sort():
+def quick_sort(random_array):
     print("Using Quick Sort")
 
-def radix_sort():
+def radix_sort(random_array):
     print("Using Radix Sort")
 
-def linear_search(search_value):
+def linear_search(search_value,random_array ):
     print(f"Using Linear Search Algorithm and look for {search_value}")
 
 def generate_sorting():
@@ -30,15 +30,15 @@ def generate_sorting():
     print(f"Generated Array: {random_array}")
     
     if sort_var[0].get():
-        bubble_sort()
+        bubble_sort(random_array)
     if sort_var[1].get():
-        merge_sort()
+        merge_sort(random_array)
     if sort_var[2].get():
-        quick_sort()
+        quick_sort(random_array)
     if sort_var[3].get():
-        radix_sort()
+        radix_sort(random_array)
     if sort_var[4].get():
-        linear_search(search_value)
+        linear_search(search_value,random_array)
     
     messagebox.showinfo("Selection Confirmed", f"Number of elements: {num_elements}\nGenerated Array: {random_array}")
 
