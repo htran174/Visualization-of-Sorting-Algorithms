@@ -14,11 +14,12 @@ def quick_sort():
 def radix_sort():
     print("Using Radix Sort")
 
-def linear_search():
-    print("Using Linear Search Algorithm")
+def linear_search(search_value):
+    print(f"Using Linear Search Algorithm and look for {search_value}")
 
 def generate_sorting():
     num_elements = entry.get()
+    search_value = search_entry.get()
     
     if not num_elements.isdigit() or int(num_elements) <= 0:
         messagebox.showerror("Input Error", "Please enter a valid positive integer for the number of elements.")
@@ -37,37 +38,36 @@ def generate_sorting():
     if sort_var[3].get():
         radix_sort()
     if sort_var[4].get():
-        linear_search()
+        linear_search(search_value)
     
     messagebox.showinfo("Selection Confirmed", f"Number of elements: {num_elements}\nGenerated Array: {random_array}")
 
-if __name__ == "__main__":
-    # Initialize main window
-    root = tk.Tk()
-    root.title("Visualization of Sorting Algorithms")
-    root.geometry("400x350")
+# Initialize main window
+root = tk.Tk()
+root.title("Visualization of Sorting Algorithms")
+root.geometry("400x350")
 
-    # Input field for number of elements
-    tk.Label(root, text="Enter number of elements:").pack(pady=5)
-    entry = tk.Entry(root)
-    entry.pack(pady=5)
+# Input field for number of elements
+tk.Label(root, text="Enter number of elements:").pack(pady=5)
+entry = tk.Entry(root)
+entry.pack(pady=5)
 
-    # Sorting algorithm checkboxes
-    sorting_algorithms = ["Bubble Sort", "Merge Sort", "Quick Sort", "Radix Sort", "Linear Search Algorithm"]
-    sort_var = [tk.BooleanVar() for _ in range(5)]
+# Sorting algorithm checkboxes
+sorting_algorithms = ["Bubble Sort", "Merge Sort", "Quick Sort", "Radix Sort", "Linear Search Algorithm"]
+sort_var = [tk.BooleanVar() for _ in range(5)]
 
-    for i in range(4):
-        tk.Checkbutton(root, text=sorting_algorithms[i], variable=sort_var[i]).pack(anchor='w')
+for i in range(4):
+    tk.Checkbutton(root, text=sorting_algorithms[i], variable=sort_var[i]).pack(anchor='w')
 
-    # Linear Search Algorithm with input field
-    linear_search_frame = tk.Frame(root)
-    linear_search_frame.pack(anchor='w', pady=5)
-    tk.Checkbutton(linear_search_frame, text="Linear Search Algorithm", variable=sort_var[4]).pack(side='left')
-    search_entry = tk.Entry(linear_search_frame)
-    search_entry.pack(side='left', padx=5)
+# Linear Search Algorithm with input field
+linear_search_frame = tk.Frame(root)
+linear_search_frame.pack(anchor='w', pady=5)
+tk.Checkbutton(linear_search_frame, text="Linear Search Algorithm", variable=sort_var[4]).pack(side='left')
+search_entry = tk.Entry(linear_search_frame)
+search_entry.pack(side='left', padx=5)
 
-    # Generate button
-    tk.Button(root, text="Generate", command=generate_sorting).pack(pady=10)
+# Generate button
+tk.Button(root, text="Generate", command=generate_sorting).pack(pady=10)
 
-    # Run the Tkinter event loop
-    root.mainloop()
+# Run the Tkinter event loop
+root.mainloop()
