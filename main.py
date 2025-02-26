@@ -13,21 +13,39 @@ import graph
 import tkinter as tk
 from tkinter import messagebox
 import random
+import time as tm
 
 def bubble_sort(random_array):
+    start_time = tm.time()
+
     print("Using Bubble Sort")
 
+    end_time = tm.time()
+    return (end_time - start_time)
+
 def merge_sort(random_array):
+    start_time = tm.time()
     print("Using Merge Sort")
+    end_time = tm.time()
+    return (end_time - start_time)
 
 def quick_sort(random_array):
+    start_time = tm.time()
     print("Using Quick Sort")
+    end_time = tm.time()
+    return (end_time - start_time)
 
 def radix_sort(random_array):
+    start_time = tm.time()
     print("Using Radix Sort")
+    end_time = tm.time()
+    return (end_time - start_time)
 
 def linear_search(search_value,random_array ):
+    start_time = tm.time()
     print(f"Using Linear Search Algorithm and look for {search_value}")
+    end_time = tm.time()
+    return (end_time - start_time)
 
 def generate_sorting():
     num_elements = entry.get()
@@ -45,24 +63,27 @@ def generate_sorting():
     random_array = [random.randint(1, 999) for _ in range(num_elements)]
     print(f"Generated Array: {random_array}")
 
-    sort_time_dictionary = {'Sort1': 10, 'sort2': 5, 'sort3': 7, 'sort4': 9, 'sort5': 15}
+    sort_time_dictionary = {}
 
     if sort_var[0].get():
-        bubble_sort(random_array.copy())
-        '''
-        example code
-        time = #get back the time it took for doing the sort
-        
-        sort_time_dictionary[bubble_sort] = time 
-        '''
+        time = bubble_sort(random_array.copy())
+        sort_time_dictionary['Bubble Sort'] = time
+
     if sort_var[1].get():
-        merge_sort(random_array.copy())
+        time = merge_sort(random_array.copy())
+        sort_time_dictionary['Merge Sort'] = time
+
     if sort_var[2].get():
-        quick_sort(random_array.copy())
+        time = quick_sort(random_array.copy())
+        sort_time_dictionary['Quick Sort'] = time
+
     if sort_var[3].get():
-        radix_sort(random_array.copy())
+        time = radix_sort(random_array.copy())
+        sort_time_dictionary['Radix Sort'] = time
+
     if sort_var[4].get():
-        linear_search(search_value,random_array.copy())
+        time = linear_search(search_value,random_array.copy())
+        sort_time_dictionary['Linear Search'] = time
     
     messagebox.showinfo("Selection Confirmed", f"Number of elements: {num_elements}\nGenerated Array: {random_array}")
 

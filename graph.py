@@ -3,11 +3,10 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 def show_graph(dictionary):
-
-    #all the selected sort
+    # All the selected sort types
     categories = list(dictionary.keys())
 
-    #all the sorted time
+    # All the sorting execution times
     values = list(dictionary.values())
 
     # Seaborn style
@@ -21,7 +20,11 @@ def show_graph(dictionary):
     ax.set_ylim(0, max(values) + 2)
     ax.set_title("Sorted Time")
 
-    # Number of frames
+    # **Adding Labels**
+    ax.set_xlabel("Types of Sort")  # Label for the bottom (X-axis)
+    ax.set_ylabel("Execution Time (seconds)")  # Label for the side (Y-axis)
+
+    # Number of frames for animation
     frames = 30
 
     # Animation function
@@ -34,7 +37,6 @@ def show_graph(dictionary):
 
     # Create animation
     ani = animation.FuncAnimation(fig, update, frames=frames, interval=50, repeat=False)
-
 
     # Show animation
     plt.show()
