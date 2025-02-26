@@ -30,15 +30,15 @@ def generate_sorting():
     print(f"Generated Array: {random_array}")
     
     if sort_var[0].get():
-        bubble_sort(random_array)
+        bubble_sort(random_array.copy())
     if sort_var[1].get():
-        merge_sort(random_array)
+        merge_sort(random_array.copy())
     if sort_var[2].get():
-        quick_sort(random_array)
+        quick_sort(random_array.copy())
     if sort_var[3].get():
-        radix_sort(random_array)
+        radix_sort(random_array.copy())
     if sort_var[4].get():
-        linear_search(search_value,random_array)
+        linear_search(search_value,random_array.copy())
     
     messagebox.showinfo("Selection Confirmed", f"Number of elements: {num_elements}\nGenerated Array: {random_array}")
 
