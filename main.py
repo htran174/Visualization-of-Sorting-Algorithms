@@ -33,10 +33,16 @@ def quick_sort(random_array):
     end_time = tm.time()
     return (end_time - start_time)
 
-def radix_sort(random_array):
-    start_time = tm.time()
-    print("Using Radix Sort")
-    end_time = tm.time()
+def radix_sort(random_array, type):
+    if (type == 0): #LSD
+        start_time = tm.time()
+        print("Using LSD Radix Sort")
+        end_time = tm.time()
+    else:
+        start_time = tm.time()
+        print("Using MSD Radix Sort")
+        end_time = tm.time()
+
     return (end_time - start_time)
 
 def linear_search(search_value,random_array ):
@@ -76,8 +82,13 @@ def generate_sorting():
         sort_time_dictionary['Quick Sort'] = time * 1000000
 
     if sort_var[3].get():
-        time = radix_sort(random_array.copy())
-        sort_time_dictionary['Radix Sort'] = time * 1000000
+        #getting LSD
+        time = radix_sort(random_array.copy(), 0)
+        sort_time_dictionary['LSD Radix Sort'] = time * 1000000
+
+        #getting MSD
+        time = radix_sort(random_array.copy(), 1)
+        sort_time_dictionary['MSD Radix Sort'] = time * 1000000
 
     if sort_var[4].get():
         time = linear_search(search_value,random_array.copy())
