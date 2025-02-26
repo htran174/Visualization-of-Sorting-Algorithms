@@ -44,9 +44,17 @@ def generate_sorting():
     num_elements = int(num_elements)
     random_array = [random.randint(1, 999) for _ in range(num_elements)]
     print(f"Generated Array: {random_array}")
-    
+
+    #sort_time_dictionary = {}
+
     if sort_var[0].get():
         bubble_sort(random_array.copy())
+        '''
+        example code
+        time = #get back the time it took for doing the sort
+        
+        sort_time_dictionary[bubble_sort] = time 
+        '''
     if sort_var[1].get():
         merge_sort(random_array.copy())
     if sort_var[2].get():
