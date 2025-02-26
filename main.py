@@ -17,9 +17,7 @@ import time as tm
 
 def bubble_sort(random_array):
     start_time = tm.time()
-
     print("Using Bubble Sort")
-
     end_time = tm.time()
     return (end_time - start_time)
 
@@ -67,23 +65,23 @@ def generate_sorting():
 
     if sort_var[0].get():
         time = bubble_sort(random_array.copy())
-        sort_time_dictionary['Bubble Sort'] = time
+        sort_time_dictionary['Bubble Sort'] = time * 1000000
 
     if sort_var[1].get():
         time = merge_sort(random_array.copy())
-        sort_time_dictionary['Merge Sort'] = time
+        sort_time_dictionary['Merge Sort'] = time * 1000000
 
     if sort_var[2].get():
         time = quick_sort(random_array.copy())
-        sort_time_dictionary['Quick Sort'] = time
+        sort_time_dictionary['Quick Sort'] = time * 1000000
 
     if sort_var[3].get():
         time = radix_sort(random_array.copy())
-        sort_time_dictionary['Radix Sort'] = time
+        sort_time_dictionary['Radix Sort'] = time * 1000000
 
     if sort_var[4].get():
         time = linear_search(search_value,random_array.copy())
-        sort_time_dictionary['Linear Search'] = time
+        sort_time_dictionary['Linear Search'] = time * 1000000
     
     messagebox.showinfo("Selection Confirmed", f"Number of elements: {num_elements}\nGenerated Array: {random_array}")
 
@@ -121,3 +119,4 @@ if __name__ == "__main__":
 
     # Run the Tkinter event loop
     root.mainloop()
+    
