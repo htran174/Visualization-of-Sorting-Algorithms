@@ -33,8 +33,12 @@ def generate_sorting():
     num_elements = entry.get()
     search_value = search_entry.get()
     
-    if not num_elements.isdigit() or int(num_elements) <= 0:
+    if not num_elements.isdigit() or int(num_elements) <= 0: #show error box if num of elements is not inputed
         messagebox.showerror("Input Error", "Please enter a valid positive integer for the number of elements.")
+        return
+    
+    if (not search_value.isdigit() or int(search_value) <= 0) and sort_var[4].get(): #show error box if search is not inputed
+        messagebox.showerror("Input Error", "Please enter a valid positive integer for Linear Search.")
         return
     
     num_elements = int(num_elements)
