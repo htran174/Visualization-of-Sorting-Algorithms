@@ -22,10 +22,11 @@ def show_graph(dictionary):
 
     # **Adding Labels**
     ax.set_xlabel("Types of Sort")  # Label for the bottom (X-axis)
-    ax.set_ylabel("Execution Time (seconds)")  # Label for the side (Y-axis)
+    ax.set_ylabel("Execution Time (microseconds)")  # Label for the side (Y-axis)
 
     # Number of frames for animation
     frames = 30
+
 
     # Animation function
     def update(frame):
