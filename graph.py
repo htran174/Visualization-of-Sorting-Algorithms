@@ -35,5 +35,6 @@ def show_graph(dictionary):
     # Create animation
     ani = animation.FuncAnimation(fig, update, frames=frames, interval=50, repeat=False)
 
+
     # Show animation
     plt.show()
