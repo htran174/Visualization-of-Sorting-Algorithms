@@ -1,3 +1,12 @@
+"""
+=================================================================================
+                                Graph.py
+Program by Hien Tran
+Takes a dictionary input and graphs it
+=================================================================================
+"""
+
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
