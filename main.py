@@ -9,7 +9,7 @@ Baisc GUI that has:
 =================================================================================
 """
 
-
+import graph
 import tkinter as tk
 from tkinter import messagebox
 import random
@@ -45,7 +45,7 @@ def generate_sorting():
     random_array = [random.randint(1, 999) for _ in range(num_elements)]
     print(f"Generated Array: {random_array}")
 
-    #sort_time_dictionary = {}
+    sort_time_dictionary = {'Sort1': 10, 'sort2': 5, 'sort3': 7, 'sort4': 9, 'sort5': 15}
 
     if sort_var[0].get():
         bubble_sort(random_array.copy())
@@ -65,6 +65,9 @@ def generate_sorting():
         linear_search(search_value,random_array.copy())
     
     messagebox.showinfo("Selection Confirmed", f"Number of elements: {num_elements}\nGenerated Array: {random_array}")
+
+    #sends dictionary to graph
+    graph.show_graph(sort_time_dictionary)
 
 if __name__ == "__main__":
 
