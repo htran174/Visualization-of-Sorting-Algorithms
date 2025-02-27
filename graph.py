@@ -33,9 +33,14 @@ def show_graph(dictionary):
     ax.set_xlabel("Types of Sort")  # Label for the bottom (X-axis)
     ax.set_ylabel("Execution Time (microseconds)")  # Label for the side (Y-axis)
 
+    # Rotate x-axis labels for better readability
+    plt.xticks(rotation=30, ha="right")
+
+    # Apply tight layout to prevent overlap
+    plt.tight_layout()
+
     # Number of frames for animation
     frames = 30
-
 
     # Animation function
     def update(frame):
