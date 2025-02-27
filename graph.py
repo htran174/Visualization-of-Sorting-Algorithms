@@ -26,7 +26,7 @@ def show_graph(dictionary):
     bars = ax.bar(categories, [0] * len(values), color=sns.color_palette("husl", len(values)))
 
     # Set limits
-    ax.set_ylim(0, max(values) + 2)
+    ax.set_ylim(0, max(values) + 50)
     ax.set_title("Sorted Time")
 
     # **Adding Labels**
