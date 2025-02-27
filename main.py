@@ -10,6 +10,7 @@ Baisc GUI that has:
 """
 
 import graph
+import sort as so 
 import tkinter as tk
 from tkinter import messagebox
 import random
@@ -17,37 +18,37 @@ import time as tm
 
 def bubble_sort(random_array):
     start_time = tm.time()
-    print("Using Bubble Sort")
+    so.bubble_sort(random_array)
     end_time = tm.time()
     return (end_time - start_time)
 
 def merge_sort(random_array):
     start_time = tm.time()
-    print("Using Merge Sort")
+    so.merge_sort(random_array)
     end_time = tm.time()
     return (end_time - start_time)
 
 def quick_sort(random_array):
     start_time = tm.time()
-    print("Using Quick Sort")
+    so.quick_sort(random_array)
     end_time = tm.time()
     return (end_time - start_time)
 
 def radix_sort(random_array, type):
     if (type == 0): #LSD
         start_time = tm.time()
-        print("Using LSD Radix Sort")
+        so.lsd_radix_sort(random_array)
         end_time = tm.time()
     else:
         start_time = tm.time()
-        print("Using MSD Radix Sort")
+        so.msd_radix_sort(random_array)
         end_time = tm.time()
 
     return (end_time - start_time)
 
 def linear_search(search_value,random_array ):
     start_time = tm.time()
-    print(f"Using Linear Search Algorithm and look for {search_value}")
+    so.linear_search(search_value, random_array)
     end_time = tm.time()
     return (end_time - start_time)
 
