@@ -9,6 +9,8 @@ Baisc GUI that has:
 =================================================================================
 """
 
+
+
 import graph
 import sort as so 
 import tkinter as tk
@@ -35,7 +37,7 @@ def quick_sort(random_array):
     return (end_time - start_time)
 
 def radix_sort(random_array, type):
-    if (type == 0): #LSD
+    if type == 0: # LSD
         start_time = tm.time()
         so.lsd_radix_sort(random_array)
         end_time = tm.time()
@@ -43,33 +45,51 @@ def radix_sort(random_array, type):
         start_time = tm.time()
         so.msd_radix_sort(random_array)
         end_time = tm.time()
-
     return (end_time - start_time)
 
-def linear_search(search_value,random_array ):
+def linear_search(search_value, random_array):
     start_time = tm.time()
-    so.linear_search(search_value, random_array)
+    result = so.linear_search_all(search_value, random_array)
     end_time = tm.time()
+    if result:
+        messagebox.showinfo("Linear Search", f"Element {search_value} found at indexes: {result}")
+       
+    else:
+        messagebox.showinfo("Linear Search", f"Element {search_value} not found in list")
+       
+
     return (end_time - start_time)
 
 def generate_sorting():
-    num_elements = entry.get()
+    user_input = entry.get()
     search_value = search_entry.get()
     
-    if not num_elements.isdigit() or int(num_elements) <= 0: #show error box if num of elements is not inputed
-        messagebox.showerror("Input Error", "Please enter a valid positive integer for the number of elements.")
-        return
+    if input_mode.get() == "Random":
+        if not user_input.isdigit() or int(user_input) <= 0:
+            messagebox.showerror("Input Error", "Please enter a valid positive integer for the number of elements.")
+            return
+        num_elements = int(user_input)
+        random_array = [random.randint(1, 999) for _ in range(num_elements)]
+    else:
+        try:
+            random_array = list(map(int, user_input.split(',')))
+        except ValueError:
+            messagebox.showerror("Input Error", "Please enter a valid list of integers separated by commas.")
+            return
     
-    if (not search_value.isdigit() or int(search_value) <= 0) and sort_var[4].get(): #show error box if search is not inputed
+    if (not search_value.isdigit()) and sort_var[4].get(): #show error box if search is not inputed
         messagebox.showerror("Input Error", "Please enter a valid positive integer for Linear Search.")
         return
+    if search_value.isdigit() and not sort_var[4].get():
+        messagebox.showerror("Input Error", "Please check Linear Search if you want to use it")
+        return
     
-    num_elements = int(num_elements)
-    random_array = [random.randint(1, 999) for _ in range(num_elements)]
+
     print(f"Generated Array: {random_array}")
-
     sort_time_dictionary = {}
-
+    
+    messagebox.showinfo("Selection Confirmed", f"Array: {random_array}")
+    
     if sort_var[0].get():
         time = bubble_sort(random_array.copy())
         sort_time_dictionary['Bubble Sort'] = time * 1000000
@@ -83,52 +103,43 @@ def generate_sorting():
         sort_time_dictionary['Quick Sort'] = time * 1000000
 
     if sort_var[3].get():
-        #getting LSD
         time = radix_sort(random_array.copy(), 0)
         sort_time_dictionary['LSD Radix Sort'] = time * 1000000
-
-        #getting MSD
         time = radix_sort(random_array.copy(), 1)
         sort_time_dictionary['MSD Radix Sort'] = time * 1000000
 
     if sort_var[4].get():
-        time = linear_search(search_value,random_array.copy())
+        time = linear_search(int(search_value), random_array.copy())
         sort_time_dictionary['Linear Search'] = time * 1000000
-    
-    messagebox.showinfo("Selection Confirmed", f"Number of elements: {num_elements}\nGenerated Array: {random_array}")
 
-    #sends dictionary to graph
     graph.show_graph(sort_time_dictionary)
 
 if __name__ == "__main__":
-
-    # Initialize main window
     root = tk.Tk()
     root.title("Visualization of Sorting Algorithms")
-    root.geometry("400x350")
-
-    # Input field for number of elements
-    tk.Label(root, text="Enter number of elements:").pack(pady=5)
+    root.geometry("400x400")
+    
+    input_mode = tk.StringVar(value="Random")
+    tk.Label(root, text="Select input mode:").pack()
+    tk.Radiobutton(root, text="Random", variable=input_mode, value="Random").pack()
+    tk.Radiobutton(root, text="Manual Input", variable=input_mode, value="Manual").pack()
+    
+    tk.Label(root, text="Enter number of elements or Enter list elements separated by comma:").pack(pady=5)
     entry = tk.Entry(root)
     entry.pack(pady=5)
-
-    # Sorting algorithm checkboxes
+    
     sorting_algorithms = ["Bubble Sort", "Merge Sort", "Quick Sort", "Radix Sort", "Linear Search Algorithm"]
     sort_var = [tk.BooleanVar() for _ in range(5)]
-
+    
     for i in range(4):
         tk.Checkbutton(root, text=sorting_algorithms[i], variable=sort_var[i]).pack(anchor='w')
-
-    # Linear Search Algorithm with input field
+    
     linear_search_frame = tk.Frame(root)
     linear_search_frame.pack(anchor='w', pady=5)
     tk.Checkbutton(linear_search_frame, text="Linear Search Algorithm", variable=sort_var[4]).pack(side='left')
     search_entry = tk.Entry(linear_search_frame)
     search_entry.pack(side='left', padx=5)
-
-    # Generate button
-    tk.Button(root, text="Generate", command=generate_sorting).pack(pady=10)
-
-    # Run the Tkinter event loop
-    root.mainloop()
     
+    tk.Button(root, text="Generate", command=generate_sorting).pack(pady=10)
+    
+    root.mainloop()
