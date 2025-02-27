@@ -4,9 +4,8 @@ def bubble_sort(arr):
 
     for i in range(n):
         for j in range(0, n - i - 1):
-            if arr[j][1] > arr[j + 1][1]:
+            if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
-
 
 #Merge Sort
 def merge_sort(arr):
@@ -115,7 +114,7 @@ def msd_radix_sort(arr):
 
 
 #Linear Search
-def linear_search_all(arr, target):
+def linear_search_all(target, arr):
     indices = []
     for index in range(len(arr)):
         if arr[index] == target:
