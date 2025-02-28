@@ -125,7 +125,7 @@ if __name__ == "__main__":
     
     tk.Label(root, text="Enter number of elements or Enter list elements separated by comma:").pack(pady=5)
     entry = tk.Entry(root)
-    entry.pack(pady=5)
+    entry.pack()
     
     sorting_algorithms = ["Bubble Sort", "Merge Sort", "Quick Sort", "Radix Sort", "Linear Search Algorithm"]
     sort_var = [tk.BooleanVar() for _ in range(5)]
@@ -134,10 +134,10 @@ if __name__ == "__main__":
         tk.Checkbutton(root, text=sorting_algorithms[i], variable=sort_var[i]).pack(anchor='w')
     
     linear_search_frame = tk.Frame(root)
-    linear_search_frame.pack(anchor='w', pady=5)
+    linear_search_frame.pack(anchor='w')
     tk.Checkbutton(linear_search_frame, text="Linear Search Algorithm", variable=sort_var[4]).pack(side='left')
     search_entry = tk.Entry(linear_search_frame)
-    search_entry.pack(side='left', padx=5)
+    search_entry.pack()
     
     tk.Button(root, text="Generate", command=generate_sorting).pack(pady=10) 
     
