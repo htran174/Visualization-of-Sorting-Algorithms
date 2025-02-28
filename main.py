@@ -77,10 +77,10 @@ def generate_sorting():
             messagebox.showerror("Input Error", "Please enter a valid list of integers separated by commas.")
             return
     
-    if (not search_value.isdigit()) and sort_var[4].get(): #show error box if search is not inputed
-        messagebox.showerror("Input Error", "Please enter a valid positive integer for Linear Search.")
+    if (not search_value.lstrip('-').isdigit()) and sort_var[4].get(): #show error box if search is not inputed
+        messagebox.showerror("Input Error", "Please enter a valid integer for Linear Search.")
         return
-    if search_value.isdigit() and not sort_var[4].get(): #show error box if user inputed search value without selcting Linear Search
+    if search_value.lstrip('-').isdigit() and not sort_var[4].get(): #show error box if user inputed search value without selcting Linear Search
         messagebox.showerror("Input Error", "Please check Linear Search if you want to use it")
         return
     
