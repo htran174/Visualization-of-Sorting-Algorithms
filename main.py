@@ -113,32 +113,41 @@ def generate_sorting():
     graph.show_graph(sort_time_dictionary, len(array))
 
 if __name__ == "__main__":
+    #color
+    black = "#000000"    # Black text
+    white = "#FFFFFF"  # White text
+    dark_gray = "#2E2E2E"  # Dark gray
+
+
+
     #Creating main GUI for user input
     root = tk.Tk()
     root.title("Visualization of Sorting Algorithms")
     root.geometry("500x400")
     
+    root.configure(bg=dark_gray)
+
     input_mode = tk.StringVar(value="Random")
-    tk.Label(root, text="Select input mode:").pack()
-    tk.Radiobutton(root, text="Random", variable=input_mode, value="Random").pack()
-    tk.Radiobutton(root, text="Manual Input", variable=input_mode, value="Manual").pack()
+    tk.Label(root, text="Select input mode:", bg= dark_gray, fg= white).pack()
+    tk.Radiobutton(root, text="Random", variable=input_mode, value="Random", bg=dark_gray, fg= white).pack()
+    tk.Radiobutton(root, text="Manual Input", variable=input_mode, value="Manual", bg=dark_gray, fg= white).pack()
     
-    tk.Label(root, text="Enter number of elements or Enter list elements separated by comma:").pack(pady=5)
-    entry = tk.Entry(root)
+    tk.Label(root, text="Enter number of elements or Enter list elements separated by comma:", bg=dark_gray, fg= white).pack(pady=5)
+    entry = tk.Entry(root, bg=dark_gray, fg= white, insertbackground=white, highlightthickness=0) #for num of elements array or user inputed array
     entry.pack()
     
     sorting_algorithms = ["Bubble Sort", "Merge Sort", "Quick Sort", "Radix Sort", "Linear Search Algorithm"]
     sort_var = [tk.BooleanVar() for _ in range(5)]
     
     for i in range(4): # only going from 0-3
-        tk.Checkbutton(root, text=sorting_algorithms[i], variable=sort_var[i]).pack(anchor='w')
+        tk.Checkbutton(root, text=sorting_algorithms[i], variable=sort_var[i], bg=dark_gray, fg= white).pack(anchor='w')
     
     linear_search_frame = tk.Frame(root)
     linear_search_frame.pack(anchor='w')
-    tk.Checkbutton(linear_search_frame, text="Linear Search Algorithm", variable=sort_var[4]).pack(side='left')
-    search_entry = tk.Entry(linear_search_frame)
+    tk.Checkbutton(linear_search_frame, text="Linear Search Algorithm", variable=sort_var[4],bg=dark_gray, fg= white).pack(side='left')
+    search_entry = tk.Entry(linear_search_frame, bg=dark_gray, fg= white, insertbackground=white, highlightthickness=0) #for search value
     search_entry.pack()
     
-    tk.Button(root, text="Generate", command=generate_sorting).pack(pady=10) 
+    tk.Button(root, text="Generate", command=generate_sorting, bg=dark_gray, fg= black).pack(pady=10) 
     
     root.mainloop()
