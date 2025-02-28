@@ -1,3 +1,14 @@
+"""
+=================================================================================
+                                Sort.py
+Program by Salvador Rios
+Sort files:
+    List of sort for the progarm
+    input a random array and sorts it
+=================================================================================
+"""
+
+
 #Bubble Sort
 def bubble_sort(arr):
     n = len(arr)
