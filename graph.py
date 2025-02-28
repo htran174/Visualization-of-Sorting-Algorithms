@@ -11,7 +11,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-def show_graph(dictionary):
+def show_graph(dictionary, len_array):
     #All the selected sort types
     categories = list(dictionary.keys())
 
@@ -27,7 +27,7 @@ def show_graph(dictionary):
 
     #Set limits
     ax.set_ylim(0, max(values) + 50)
-    ax.set_title("Sorted Time")
+    ax.set_title(f"Sorted Time with {len_array} elements")
 
     #Adding Labels
     ax.set_xlabel("Types of Sort")  # Label for the bottom (X-axis)

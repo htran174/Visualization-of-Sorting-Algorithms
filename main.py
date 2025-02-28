@@ -110,7 +110,7 @@ def generate_sorting():
         time = linear_search(int(search_value), random_array.copy())
         sort_time_dictionary['Linear Search'] = time * 1000000 #adding to dictionary and converting time to microseconds
 
-    graph.show_graph(sort_time_dictionary)
+    graph.show_graph(sort_time_dictionary, len(random_array))
 
 if __name__ == "__main__":
     #Creating main GUI for user input
