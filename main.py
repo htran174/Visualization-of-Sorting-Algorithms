@@ -18,38 +18,38 @@ from tkinter import messagebox
 import random
 import time as tm
 
-def bubble_sort(random_array):
+def bubble_sort(array):
     start_time = tm.time()
-    so.bubble_sort(random_array)
+    so.bubble_sort(array)
     end_time = tm.time()
     return (end_time - start_time)
 
-def merge_sort(random_array):
+def merge_sort(array):
     start_time = tm.time()
-    so.merge_sort(random_array)
+    so.merge_sort(array)
     end_time = tm.time()
     return (end_time - start_time)
 
-def quick_sort(random_array):
+def quick_sort(array):
     start_time = tm.time()
-    so.quick_sort(random_array)
+    so.quick_sort(array)
     end_time = tm.time()
     return (end_time - start_time)
 
-def radix_sort(random_array, type):
+def radix_sort(array, type):
     if type == 0: # LSD
         start_time = tm.time()
-        so.lsd_radix_sort(random_array)
+        so.lsd_radix_sort(array)
         end_time = tm.time()
     else: #MSD
         start_time = tm.time()
-        so.msd_radix_sort(random_array)
+        so.msd_radix_sort(array)
         end_time = tm.time()
     return (end_time - start_time)
 
-def linear_search(search_value, random_array):
+def linear_search(search_value, array):
     start_time = tm.time()
-    result = so.linear_search_all(search_value, random_array)
+    result = so.linear_search_all(search_value, array)
     end_time = tm.time()
     if result:
         messagebox.showinfo("Linear Search", f"Element {search_value} found at indexes: {result}")
@@ -69,10 +69,10 @@ def generate_sorting():
             messagebox.showerror("Input Error", "Please enter a valid positive integer for the number of elements.")
             return
         num_elements = int(user_input)
-        random_array = [random.randint(1, 999) for _ in range(num_elements)]
+        array = [random.randint(1, 999) for _ in range(num_elements)]
     else: #if user input own array
         try:
-            random_array = list(map(int, user_input.split(',')))
+            array = list(map(int, user_input.split(',')))
         except ValueError:
             messagebox.showerror("Input Error", "Please enter a valid list of integers separated by commas.")
             return
@@ -86,31 +86,31 @@ def generate_sorting():
     
     sort_time_dictionary = {} #creating a dictionary 
     
-    messagebox.showinfo("Selection Confirmed", f"Array: {random_array}")
+    messagebox.showinfo("Selection Confirmed", f"Array: {array}")
     
     if sort_var[0].get():
-        time = bubble_sort(random_array.copy())
+        time = bubble_sort(array.copy())
         sort_time_dictionary['Bubble Sort'] = time * 1000000 #adding to dictionary and converting time to microseconds
 
     if sort_var[1].get():
-        time = merge_sort(random_array.copy())
+        time = merge_sort(array.copy())
         sort_time_dictionary['Merge Sort'] = time * 1000000 #adding to dictionary and converting time to microseconds
 
     if sort_var[2].get():
-        time = quick_sort(random_array.copy())
+        time = quick_sort(array.copy())
         sort_time_dictionary['Quick Sort'] = time * 1000000 #adding to dictionary and converting time to microseconds
 
     if sort_var[3].get():
-        time = radix_sort(random_array.copy(), 0)
+        time = radix_sort(array.copy(), 0)
         sort_time_dictionary['LSD Radix Sort'] = time * 1000000 #adding to dictionary and converting time to microseconds
-        time = radix_sort(random_array.copy(), 1)
+        time = radix_sort(array.copy(), 1)
         sort_time_dictionary['MSD Radix Sort'] = time * 1000000 #adding to dictionary and converting time to microseconds
 
     if sort_var[4].get():
-        time = linear_search(int(search_value), random_array.copy())
+        time = linear_search(int(search_value), array.copy())
         sort_time_dictionary['Linear Search'] = time * 1000000 #adding to dictionary and converting time to microseconds
 
-    graph.show_graph(sort_time_dictionary, len(random_array))
+    graph.show_graph(sort_time_dictionary, len(array))
 
 if __name__ == "__main__":
     #Creating main GUI for user input
