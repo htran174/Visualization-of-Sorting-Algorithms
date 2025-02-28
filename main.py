@@ -116,7 +116,7 @@ if __name__ == "__main__":
     #Creating main GUI for user input
     root = tk.Tk()
     root.title("Visualization of Sorting Algorithms")
-    root.geometry("400x400")
+    root.geometry("500x400")
     
     input_mode = tk.StringVar(value="Random")
     tk.Label(root, text="Select input mode:").pack()
