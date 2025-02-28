@@ -1,7 +1,7 @@
 """
 =================================================================================
                                 Main.py
-Program by Hien Tran
+Program by Hien Tran, and Salvador Rios
 Baisc GUI that has:
     Textbox that let the user input number of elements in the arrary
     Allow user to select which sort they want to use
