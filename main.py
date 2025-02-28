@@ -41,7 +41,7 @@ def radix_sort(random_array, type):
         start_time = tm.time()
         so.lsd_radix_sort(random_array)
         end_time = tm.time()
-    else:
+    else: #MSD
         start_time = tm.time()
         so.msd_radix_sort(random_array)
         end_time = tm.time()
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     sorting_algorithms = ["Bubble Sort", "Merge Sort", "Quick Sort", "Radix Sort", "Linear Search Algorithm"]
     sort_var = [tk.BooleanVar() for _ in range(5)]
     
-    for i in range(4):
+    for i in range(4): # only going from 0-3
         tk.Checkbutton(root, text=sorting_algorithms[i], variable=sort_var[i]).pack(anchor='w')
     
     linear_search_frame = tk.Frame(root)

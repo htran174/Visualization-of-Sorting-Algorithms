@@ -12,37 +12,37 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 def show_graph(dictionary):
-    # All the selected sort types
+    #All the selected sort types
     categories = list(dictionary.keys())
 
-    # All the sorting execution times
+    #All the sorting execution times
     values = list(dictionary.values())
 
-    # Seaborn style
+    #Seaborn style
     sns.set_style("whitegrid")
 
-    # Create figure and axis
+    #Create figure and axis
     fig, ax = plt.subplots()
     bars = ax.bar(categories, [0] * len(values), color=sns.color_palette("husl", len(values)))
 
-    # Set limits
+    #Set limits
     ax.set_ylim(0, max(values) + 50)
     ax.set_title("Sorted Time")
 
-    # **Adding Labels**
+    #Adding Labels
     ax.set_xlabel("Types of Sort")  # Label for the bottom (X-axis)
     ax.set_ylabel("Execution Time (microseconds)")  # Label for the side (Y-axis)
 
-    # Rotate x-axis labels for better readability
+    #Rotate x-axis labels for better readability
     plt.xticks(rotation=30, ha="right")
 
-    # Apply tight layout to prevent overlap
+    #Apply tight layout to prevent overlap
     plt.tight_layout()
 
-    # Number of frames for animation
+    #Number of frames for animation
     frames = 30
 
-    # Animation function
+    #Animation function
     def update(frame):
         progress = (frame + 1) / frames  # Normalize frame count to range [0, 1]
         for bar, target_value in zip(bars, values):
@@ -50,8 +50,8 @@ def show_graph(dictionary):
         if frame == frames - 1:  # Stop animation when reaching the last frame
             ani.event_source.stop()
 
-    # Create animation
-    ani = animation.FuncAnimation(fig, update, frames=frames, interval=50, repeat=False)
+    #Create animation
+    ani = animation.FuncAnimation(fig, update, frames=30, interval=50, repeat=False)
 
-    # Show animation
+    #Show
     plt.show()
