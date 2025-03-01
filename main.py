@@ -133,7 +133,7 @@ if __name__ == "__main__":
     tk.Radiobutton(root, text="Manual Input", variable=input_mode, value="Manual", bg=dark_gray, fg= white).pack()
     
     tk.Label(root, text="Enter number of elements or Enter list elements separated by comma:", bg=dark_gray, fg= white).pack(pady=5)
-    entry = tk.Entry(root, bg=dark_gray, fg= white, insertbackground=white, highlightthickness=0) #for num of elements array or user inputed array
+    entry = tk.Entry(root, bg=dark_gray, fg= white, insertbackground=white, highlightthickness=-1) #for num of elements array or user inputed array
     entry.pack()
     
     sorting_algorithms = ["Bubble Sort", "Merge Sort", "Quick Sort", "Radix Sort", "Linear Search Algorithm"]
@@ -143,6 +143,7 @@ if __name__ == "__main__":
         tk.Checkbutton(root, text=sorting_algorithms[i], variable=sort_var[i], bg=dark_gray, fg= white).pack(anchor='w')
     
     linear_search_frame = tk.Frame(root)
+    linear_search_frame.configure(bg=dark_gray)
     linear_search_frame.pack(anchor='w')
     tk.Checkbutton(linear_search_frame, text="Linear Search Algorithm", variable=sort_var[4],bg=dark_gray, fg= white).pack(side='left')
     search_entry = tk.Entry(linear_search_frame, bg=dark_gray, fg= white, insertbackground=white, highlightthickness=0) #for search value
