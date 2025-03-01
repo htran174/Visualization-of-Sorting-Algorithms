@@ -85,8 +85,10 @@ def generate_sorting():
         return
     
     sort_time_dictionary = {} #creating a dictionary 
-    
-    messagebox.showinfo("Selection Confirmed", f"Array: {array}")
+    if len(array) > 100:
+        messagebox.showinfo("Selection Confirmed", f"Array {array[:10]}... {array[-10:]}")
+    else:
+        messagebox.showinfo("Selection Confirmed", f"Array: {array}")
     
     if sort_var[0].get():
         time = bubble_sort(array.copy())
